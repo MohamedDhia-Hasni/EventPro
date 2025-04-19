@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Palette de couleurs principale */
+    --primary-color: #3A86FF;      /* Royal Blue - Professional and trustworthy */
+    --secondary-color: #8338EC;    /* Rich Purple - Elegant and creative */
+    --accent-color: #FF006E;       /* Vibrant Pink - Energetic and attention-grabbing */
+    
+    /* Couleurs neutres */
+    --dark-color: #1E2A3B;         /* Deep Blue - Near-black with blue undertone */
+    --light-color: #F8F9FA;        /* Light Gray - Clean and professional */
+    --gray-color: #6C757D;         /* Medium Gray - For secondary text */
+    
+    /* Couleurs de fond */
+    --background-light: #F8F9FA;   /* Light Gray */
+    --background-alt: #FFFFFF;     /* Pure white */
+    
+    /* Couleurs d'état */
+    --success-color: #06D6A0;      /* Teal green for success states */
+    --error-color: #EF476F;        /* Soft red for error states */
+    --warning-color: #FFD166;      /* Warm yellow for warnings */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.home-link {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    color: var(--background-alt);
+    font-size: 1.5rem;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-link:hover {
+    opacity: 1;
+    transform: scale(1.1) rotate(360deg);
+}
+
+.container {
+    background: var(--background-alt);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(30, 42, 59, 0.1);
+    animation: fadeInUp 0.8s ease-out;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(58, 134, 255, 0.15);
+}
+
+.login-box h2 {
+    font-size: 1.75rem;
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.login-box p {
+    color: var(--gray-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    position: relative;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--light-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: var(--dark-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--background-alt);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(58, 134, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.input-group input::placeholder {
+    color: var(--gray-color);
+    transition: opacity 0.2s;
+}
+
+.input-group input:focus::placeholder {
+    opacity: 0.7;
+}
+
+.password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--gray-color);
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-color);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+}
+
+.options label:hover {
+    color: var(--primary-color);
+}
+
+.options input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.options input[type="checkbox"]:hover {
+    transform: scale(1.1);
+}
+
+.options a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.options a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.options a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 200%;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.login-btn:hover::before {
+    left: 100%;
+}
+
+.login-btn:active {
+    transform: translateY(1px);
+}
+
+.signup-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--gray-color);
+    font-size: 0.875rem;
+    animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+.signup-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.signup-text a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.signup-text a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+  
