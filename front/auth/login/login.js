@@ -4,12 +4,24 @@ const passwordInput = document.getElementById('password');
 const passwordToggle = document.querySelector('.password-toggle');
 
 // Toggle password visibility
-passwordToggle.addEventListener('click', () => {
+/*passwordToggle.addEventListener('click', () => {
   const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
   passwordInput.setAttribute('type', type);
-  passwordToggle.classList.toggle('fa-eye');
-  passwordToggle.classList.toggle('fa-eye-slash');
-});
+  this.classList.toggle('fa-eye');
+  this.classList.toggle('fa-eye-slash');
+});*/
+document.addEventListener('DOMContentLoaded', function(){
+  // Password toggle functionality
+  const passwordToggles = document.querySelectorAll('.password-toggle');
+  passwordToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const input = this.parentElement.querySelector('input');
+      const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+      input.setAttribute('type', type);
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+  });
 
 // Form validation on submission
 loginForm.addEventListener('submit', (e) => {
@@ -48,4 +60,4 @@ loginForm.addEventListener('submit', (e) => {
       loginForm.reset();
     }, 3000);
   }
-});
+})});

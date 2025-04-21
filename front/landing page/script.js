@@ -2,10 +2,12 @@
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  menuToggle.classList.toggle('active');
-});
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+}
 
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -20,10 +22,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Navbar Background Change on Scroll
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
-  if (window.scrollY > 50) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
+  if (nav) {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
   }
 });
 
@@ -62,7 +66,7 @@ if (contactForm) {
   });
 }
 
-// Animate elements on scroll
+// Animate elements on scroll (for index.html)
 const animateOnScroll = () => {
   const elements = document.querySelectorAll('.service-card, .event-card, .testimonial-card');
   
@@ -77,4 +81,34 @@ const animateOnScroll = () => {
 };
 
 window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll); 
+window.addEventListener('load', animateOnScroll);
+
+// Handle close button for About Us and Privacy Policy pages
+document.addEventListener('DOMContentLoaded', () => {
+  const closeButton = document.querySelector('.close-button');
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      window.close();
+    });
+  }
+
+  // Fade-in animation for content items on About Us and Privacy Policy pages
+  const contentItems = document.querySelectorAll('.content-item');
+  const observerOptions = {
+    root: null,
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  contentItems.forEach(item => {
+    observer.observe(item);
+  });
+});
