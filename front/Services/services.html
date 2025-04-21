@@ -10,6 +10,8 @@
 </head>
 <body>
   <header class="services-header">
+    <div class="services-background"></div> <!-- background image only -->
+  
     <nav>
       <a href="index.html" class="logo-link">
         <div class="logo">
@@ -30,12 +32,14 @@
         <span></span>
       </button>
     </nav>
+  
     <div class="header-content">
       <h1>Our Premium Services</h1>
       <p>Discover how we can make your next event unforgettable with our comprehensive services</p>
     </div>
   </header>
-
+  
+  
   <main class="services-main">
     <section class="services-intro">
       <h2>Tailored Event Solutions</h2>
@@ -98,6 +102,50 @@
       </div>
     </section>
 
+    <section class="cta-section">
+      <h2>Ready to Plan Your Event?</h2>
+      <p>Contact us today to discuss how we can bring your vision to life</p>
+      <div class="cta-buttons">
+        <button class="cta-button" name="BIG BIG BIG BUTTON" id="openModal">Get in Touch</button>
+        
+      </div>
+    </section>
+
+<!-- Modal Structure -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <h2>Get a Quote</h2>
+    <form id="quoteForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+
+      <select name="eventType" required>
+        <option disabled selected>Select Event Type</option>
+        <optgroup label="PRIVATE PARTIES">
+          <option>Birthdays</option>
+          <option>Gatherings</option>
+          <option>Graduation party</option>
+        </optgroup>
+        <optgroup label="KIDS' EVENTS">
+          <option>Birthday Parties</option>
+          <option>Fun Activities</option>
+        </optgroup>
+        <optgroup label="PRODUCT LAUNCHES">
+          <option>New Product Unveilings</option>
+        </optgroup>
+      </select>
+
+      <textarea name="description" placeholder="Tell us about your event..." required></textarea>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <div class="thank-you" id="thankYouMessage">Thank you! We'll get back to you shortly. 🎉</div>
+  </div>
+</div>
+
+
     <section class="testimonials">
       <h2>What Our Clients Say</h2>
       <div class="testimonial-slider">
@@ -138,14 +186,7 @@
       </div>
     </section>
 
-    <section class="cta-section">
-      <h2>Ready to Plan Your Event?</h2>
-      <p>Contact us today to discuss how we can bring your vision to life</p>
-      <div class="cta-buttons">
-        <a href="contact.html" class="cta-button">Get in Touch</a>
-        <a href="signup.html" class="cta-button secondary">Sign Up Now</a>
-      </div>
-    </section>
+   
   </main>
 
   <footer class="services-footer">
@@ -162,10 +203,9 @@
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="../landing page/index.html">Home</a></li>
+          <li><a href="../landing page/about.html">About Us</a></li>
+          <li><a href="../landing page/contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-section">
