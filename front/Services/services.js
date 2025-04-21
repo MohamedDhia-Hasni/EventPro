@@ -89,14 +89,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    form.style.display = 'none';
-    thankYou.style.display = 'block';
-    setTimeout(() => {
-      modal.style.display = 'none';
-      thankYou.style.display = 'none';
-      form.style.display = 'block';
-      form.reset();
-    }, 3000);
+  
+    const data = {
+      name: form.elements[0].value,
+      email: form.elements[1].value,
+      phone: form.elements[2].value,
+      eventType: form.elements[3].value,
+      message: form.elements[4].value,
+    };
+  
+    try {
+      await fetch('http://localhost:3000/quotes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+  
+      form.style.display = 'none';
+      thankYou.style.display = 'block';
+      setTimeout(() => {
+        modal.style.display = 'none';
+        thankYou.style.display = 'none';
+        form.style.display = 'block';
+        form.reset();
+      }, 3000);
+    } catch (err) {
+      alert("Failed to send quote. Try again.");
+      console.error(err);
+    }
   });

@@ -56,7 +56,7 @@ if (contactForm) {
     
     // Reset form after 5 seconds
     setTimeout(() => {
-      this.innerHTML = `
+      this.innerHTML = ` 
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
         <textarea placeholder="Tell us about your event" rows="4" required></textarea>
@@ -83,12 +83,12 @@ const animateOnScroll = () => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-// Handle close button for About Us and Privacy Policy pages
+// Handle close button for About Us, Privacy Policy, and Contact pages
 document.addEventListener('DOMContentLoaded', () => {
   const closeButton = document.querySelector('.close-button');
   if (closeButton) {
     closeButton.addEventListener('click', () => {
-      window.close();
+      window.location.href = 'index.html';
     });
   }
 
