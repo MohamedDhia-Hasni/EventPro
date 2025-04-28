@@ -53,7 +53,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg');
+  background-image: url('https://scontent.ftun15-1.fna.fbcdn.net/v/t39.30808-6/476361751_122174328650284591_2337542762650079541_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Umi_QTtO-a4Q7kNvwHG-btn&_nc_oc=AdnLKYlHf2-Q3Q7H3qc8frXawNanNwzC2CKWRp-5FaD4K9MpyRdmpCFbkzo_T6IAzs5IwObrhghH0bjCNYdLg2JW&_nc_zt=23&_nc_ht=scontent.ftun15-1.fna&_nc_gid=G5v-As4LCnfdWnOSRI5Iqw&oh=00_AfF6BtJ5TQD8mRRnYCG6esutdWRRYpgVgVJFdK-igWuLMQ&oe=680C517B');
   background-size: cover;
   background-position: center;
   opacity: 0.3;
@@ -218,7 +218,6 @@ nav.scrolled {
 
 .cta-button {
   background: linear-gradient(45deg, #FF3366, #FF8080);
-  text-decoration: none;
   color: white;
   padding: 0.7rem 1.8rem;
   border: none;
@@ -238,6 +237,7 @@ nav.scrolled {
     inset 0 0 8px rgba(255,255,255,0.1);
   animation: buttonPulse 3s infinite;
   margin-top: 2rem;
+  text-decoration: none;
 }
 .button:hover {
   animation: buttonPulse 1s infinite; /* Adjust the timing for desired speed */

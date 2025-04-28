@@ -10,8 +10,10 @@
 </head>
 <body>
   <header class="services-header">
+    <div class="services-background"></div> <!-- background image only -->
+  
     <nav>
-      <a href="index.html" class="logo-link">
+      <a href="../landing page/index.html" class="logo-link">
         <div class="logo">
           <div class="logo-icon">
             <i class="fas fa-glass-cheers"></i>
@@ -20,10 +22,9 @@
         </div>
       </a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="services.html" class="active">Services</a>
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a>
+        <a href="../landing page/index.html">Home</a>
+        <a href="../auth/login/login.html">Login</a>
+        <a href="../auth/signup/signup.html">Sign Up</a>
       </div>
       <button class="menu-toggle">
         <span></span>
@@ -31,12 +32,14 @@
         <span></span>
       </button>
     </nav>
+  
     <div class="header-content">
       <h1>Our Premium Services</h1>
       <p>Discover how we can make your next event unforgettable with our comprehensive services</p>
     </div>
   </header>
-
+  
+  
   <main class="services-main">
     <section class="services-intro">
       <h2>Tailored Event Solutions</h2>
@@ -99,15 +102,59 @@
       </div>
     </section>
 
+    <section class="cta-section">
+      <h2>Ready to Plan Your Event?</h2>
+      <p>Contact us today to discuss how we can bring your vision to life</p>
+      <div class="cta-buttons">
+        <button class="cta-button" name="BIG BIG BIG BUTTON" id="openModal">Get in Touch</button>
+        
+      </div>
+    </section>
+
+<!-- Modal Structure -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <h2>Get a Quote</h2>
+    <form id="quoteForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+
+      <select name="eventType" required>
+        <option disabled selected>Select Event Type</option>
+        <optgroup label="PRIVATE PARTIES">
+          <option>Birthdays</option>
+          <option>Gatherings</option>
+          <option>Graduation party</option>
+        </optgroup>
+        <optgroup label="KIDS' EVENTS">
+          <option>Birthday Parties</option>
+          <option>Fun Activities</option>
+        </optgroup>
+        <optgroup label="PRODUCT LAUNCHES">
+          <option>New Product Unveilings</option>
+        </optgroup>
+      </select>
+
+      <textarea name="description" placeholder="Tell us about your event..." required></textarea>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <div class="thank-you" id="thankYouMessage">Thank you! We'll get back to you shortly. 🎉</div>
+  </div>
+</div>
+
+
     <section class="testimonials">
       <h2>What Our Clients Say</h2>
       <div class="testimonial-slider">
         <div class="testimonial active">
           <p>"EventPro transformed our corporate gala into an unforgettable experience. Their attention to detail was impeccable!"</p>
           <div class="client">
-            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+            <img src="https://scontent.ftun15-1.fna.fbcdn.net/v/t39.30808-1/438145763_422297364071558_825191339509869572_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=109&ccb=1-7&_nc_sid=e99d92&_nc_ohc=ji-wuJTSmzgQ7kNvwGL7bfS&_nc_oc=AdksTiCNR6bVZBATbbJfJWplB2gfPgP6dfUUFpfFHHSNXzfeKfeKgtFO85DrZGlZqCTxBezPqdC2hYTaLO7jMVDm&_nc_zt=24&_nc_ht=scontent.ftun15-1.fna&_nc_gid=NqbcJngAdBvfHFITUI82kw&oh=00_AfEpndr65g_qA-UAeL_ABuMPTO4wJ6_aEAhVX6xzGFGfPw&oe=680C6A1C" alt="Sarah Johnson">
             <div class="client-info">
-              <h4>Sarah Johnson</h4>
+              <h4>Kabil boufares</h4>
               <span>Marketing Director, TechCorp</span>
             </div>
           </div>
@@ -115,9 +162,9 @@
         <div class="testimonial">
           <p>"Our wedding was perfect thanks to EventPro. They handled everything so we could just enjoy our special day."</p>
           <div class="client">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+            <img src="https://scontent.ftun14-1.fna.fbcdn.net/v/t1.6435-1/139979834_947822435981076_4092975199111002567_n.jpg?stp=c263.0.674.675a_dst-jpg_s200x200_tt6&_nc_cat=102&ccb=1-7&_nc_sid=e99d92&_nc_ohc=hYx4jb7UpToQ7kNvwEzQt1b&_nc_oc=AdnS50i4DDsDXUK2GI4fVEsh9b5t7gYGX4hVpEN5V1juWE-hUqQ0VDP1BsTQBl0ICS4&_nc_zt=24&_nc_ht=scontent.ftun14-1.fna&_nc_gid=0jNxa3HvLL2TmwK7x4G63Q&oh=00_AfGGPK6Y6dLoXpj5E844zG_ZmXLMxRxitHnNWHCDXOJmQA&oe=682DFDB7" alt="Michael Chen">
             <div class="client-info">
-              <h4>Michael &amp; Emily Chen</h4>
+              <h4>Ilyes Samaly </h4>
               <span>Wedding Clients</span>
             </div>
           </div>
@@ -125,9 +172,9 @@
         <div class="testimonial">
           <p>"The team's creativity and professionalism made our product launch a huge success with media and clients alike."</p>
           <div class="client">
-            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa Rodriguez">
+            <img src="https://scontent.ftun15-1.fna.fbcdn.net/v/t39.30808-6/475900794_2066956187071221_7011839828766599496_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=YU-Wwzphw5IQ7kNvwHIK2a9&_nc_oc=AdmPBxXEsXowT1OdecOaZC1XSu8DPdbP06-07HHOk9eR1CLMKJXmuZ0PNGyuCUyOgghk5HjUWcbAi33Soljk5GJ1&_nc_zt=23&_nc_ht=scontent.ftun15-1.fna&_nc_gid=TS-VO-PK8kB1SxXcKwEW5w&oh=00_AfHFdCtjVLWN3BL8F5iW9M4CNDOFAK4ZmWxNFnnxdONW8w&oe=680C551A" alt="Lisa Rodriguez">
             <div class="client-info">
-              <h4>Lisa Rodriguez</h4>
+              <h4>Rostom Turki</h4>
               <span>CEO, InnovateCo</span>
             </div>
           </div>
@@ -139,14 +186,7 @@
       </div>
     </section>
 
-    <section class="cta-section">
-      <h2>Ready to Plan Your Event?</h2>
-      <p>Contact us today to discuss how we can bring your vision to life</p>
-      <div class="cta-buttons">
-        <a href="contact.html" class="cta-button">Get in Touch</a>
-        <a href="signup.html" class="cta-button secondary">Sign Up Now</a>
-      </div>
-    </section>
+   
   </main>
 
   <footer class="services-footer">
@@ -163,10 +203,9 @@
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="../landing page/index.html">Home</a></li>
+          <li><a href="../landing page/about.html">About Us</a></li>
+          <li><a href="../landing page/contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-section">

@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule } from '@nestjs/jwt';
+import { QuoteModule } from './quote/quote.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
@@ -28,6 +29,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
     AuthModule,
+    QuoteModule,
   ],
   controllers: [AppController],
   providers: [AppService],

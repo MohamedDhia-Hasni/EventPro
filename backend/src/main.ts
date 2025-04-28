@@ -12,6 +12,11 @@ async function bootstrap() {
       transform: true, // Automatically transforms payload to DTO class instances
     }),
   );
+  app.enableCors({
+    origin: '*',  // Allow all origins (you can replace '*' with specific domains like 'http://localhost:4200')
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',  // Allowed HTTP methods
+    allowedHeaders: 'Content-Type, Accept',  // Allowed headers
+  });
   await app.listen(3000);
 }
 void bootstrap();

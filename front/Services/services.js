@@ -60,3 +60,63 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
+
+
+  //modal js
+  const modal = document.getElementById('modal');
+  const openModalBtn = document.getElementById('openModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const form = document.getElementById('quoteForm');
+  const thankYou = document.getElementById('thankYouMessage');
+
+  openModalBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
+
+  closeModalBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    thankYou.style.display = 'none';
+    form.style.display = 'block';
+    form.reset();
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      thankYou.style.display = 'none';
+      form.style.display = 'block';
+      form.reset();
+    }
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+  
+    const data = {
+      name: form.elements[0].value,
+      email: form.elements[1].value,
+      phone: form.elements[2].value,
+      eventType: form.elements[3].value,
+      message: form.elements[4].value,
+    };
+  
+ /*   try {*/
+      await fetch('http://localhost:3000/quotes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+  
+      form.style.display = 'none';
+      thankYou.style.display = 'block';
+      setTimeout(() => {
+        modal.style.display = 'none';
+        thankYou.style.display = 'none';
+        form.style.display = 'block';
+        form.reset();
+      }, 3000);
+ /*   } catch (err) {
+      alert("Failed to send quote. Try again.");
+      console.error(err);
+    }*/
+  });

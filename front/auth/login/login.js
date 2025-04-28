@@ -1,63 +1,81 @@
-const loginForm = document.getElementById('loginForm');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const passwordToggle = document.querySelector('.password-toggle');
+document.addEventListener('DOMContentLoaded', function () {
+  const loginForm = document.getElementById('loginForm');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const successMessage = document.querySelector('.success-message');
+  const emailErrorMessage = document.querySelector('.form-group .error-message:first-of-type');
+  const passwordErrorMessage = document.querySelector('.form-group.password-field .error-message');
 
-// Toggle password visibility
-/*passwordToggle.addEventListener('click', () => {
-  const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  passwordInput.setAttribute('type', type);
-  this.classList.toggle('fa-eye');
-  this.classList.toggle('fa-eye-slash');
-});*/
-document.addEventListener('DOMContentLoaded', function(){
-  // Password toggle functionality
-  const passwordToggles = document.querySelectorAll('.password-toggle');
-  passwordToggles.forEach(toggle => {
-    toggle.addEventListener('click', function() {
-      const input = this.parentElement.querySelector('input');
+  // 🔒 Toggle password visibility
+  const passwordToggle = document.querySelector('.password-toggle');
+  if (passwordToggle) {
+    passwordToggle.addEventListener('click', function () {
+      const input = this.closest('.input-wrapper').querySelector('input');
       const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
       input.setAttribute('type', type);
       this.classList.toggle('fa-eye');
       this.classList.toggle('fa-eye-slash');
     });
+  }
+
+  // ✅ Form validation & API request
+  loginForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    let isValid = true;
+
+    // Reset error states
+    emailErrorMessage.style.display = 'none';
+    passwordErrorMessage.style.display = 'none';
+
+    const emailValue = emailInput.value.trim();
+    const passwordValue = passwordInput.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validate email
+    if (!emailPattern.test(emailValue)) {
+      emailErrorMessage.style.display = 'block'; // Show email error
+      isValid = false;
+    }
+
+    // Validate password
+    if (passwordValue === '') {
+      passwordErrorMessage.style.display = 'block'; // Show password error
+      isValid = false;
+    }
+
+    // Proceed with login if form is valid
+    if (isValid) {
+      try {
+        const response = await fetch('http://localhost:3000/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username: emailValue, password: passwordValue }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const token = data.access_token;  // JWT token
+
+          // Store the token in localStorage
+          localStorage.setItem('authToken', token);
+
+          // Show success message and hide the form
+          successMessage.style.display = 'block';
+          setTimeout(() => {
+            window.location.href = 'services.html';  // Redirect to services page after success
+          }, 2000);  // Redirect after 2 seconds
+        } else {
+          const errorData = await response.json();
+          // Handle backend error and display it
+          alert(errorData.message || 'Login failed, please try again.');
+        }
+      } catch (error) {
+        // Handle any other errors (e.g., network errors)
+        console.error('Error:', error);
+        alert('An error occurred, please try again later.');
+      }
+    }
   });
-
-// Form validation on submission
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  let isValid = true;
-
-  // Reset error states
-  const formGroups = loginForm.querySelectorAll('.form-group');
-  formGroups.forEach(group => group.classList.remove('error'));
-
-  // Validate email
-  const emailValue = emailInput.value.trim();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(emailValue)) {
-    emailInput.parentElement.classList.add('error');
-    isValid = false;
-  }
-
-  // Validate password
-  const passwordValue = passwordInput.value.trim();
-  if (passwordValue === '') {
-    passwordInput.parentElement.classList.add('error');
-    isValid = false;
-  }
-
-  // If valid, show success message
-  if (isValid) {
-    const successMessage = loginForm.parentElement.querySelector('.success-message');
-    successMessage.style.display = 'block';
-    loginForm.style.display = 'none';
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      successMessage.style.display = 'none';
-      loginForm.style.display = 'block';
-      loginForm.reset();
-    }, 3000);
-  }
-})});
+});

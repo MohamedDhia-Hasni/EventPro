@@ -10,8 +10,6 @@ import { SignupDto } from './dtos/signup.dto';
 import * as bcrypt from 'bcrypt';
 import { LoginDto } from './dtos/login.dto';
 import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
-
 @Injectable()
 export class AuthService {
   constructor(
@@ -52,14 +50,4 @@ export class AuthService {
       accessToken,
     };
   }
-
-  /*async logout(logoutData: { userId: string }) {
-    const { userId } = logoutData;
-    const user = await this.userModel.findById(userId);
-    if (!user) {
-      throw new BadRequestException('User not found');
-    }
-    // Perform logout logic here (e.g., invalidate session, etc.)
-    return { message: 'Logged out successfully' };
-  }*/
 }
