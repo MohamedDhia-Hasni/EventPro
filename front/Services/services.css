@@ -58,8 +58,14 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.3s;
+  top: 0;
+  background-color: rgba(10, 15, 42, 0.9);
+  backdrop-filter: blur(10px);
 }
 
 .logo-link {
@@ -126,7 +132,7 @@ nav {
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 15rem 2rem;
   text-align: center;
 }
 
@@ -491,6 +497,7 @@ nav {
   background-color: var(--dark-color);
   color: var(--light-color);
   padding: 3rem 2rem 1rem;
+  border-top: 4px solid var(--accent-color); /* Added top border */
 }
 
 .footer-content {
@@ -501,33 +508,65 @@ nav {
   margin: 0 auto;
 }
 
+/* Footer sections */
+.footer-section {
+  padding: 1rem;
+  transition: transform 0.3s ease; 
+}
+
+.footer-section:hover {
+  transform: translateY(-5px); 
+}
+
+/* Section headings */
 .footer-section h3 {
   color: var(--accent-color);
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-color); /* Underline effect */
+  display: inline-block; 
 }
 
+/* List items */
 .footer-section ul {
   list-style: none;
+  padding: 0;
 }
 
 .footer-section ul li {
   margin-bottom: 0.8rem;
+  padding-left: 1rem;
+  position: relative;
 }
 
+/* bullet points */
+.footer-section ul li::before {
+  content: "•";
+  color: var(--accent-color);
+  position: absolute;
+  left: 0;
+}
+
+/* Links */
 .footer-section a {
   color: var(--light-color);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: all 0.3s;
+  display: inline-block;
+  padding: 0.2rem 0;
 }
 
 .footer-section a:hover {
   color: var(--accent-color);
+  padding-left: 5px; /* hover effect */
 }
 
+/* Social links */
 .social-links {
   display: flex;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .social-links a {
@@ -544,9 +583,10 @@ nav {
 
 .social-links a:hover {
   background-color: var(--accent-color);
-  transform: translateY(-3px);
+  transform: scale(1.1); /* Simple grow effect */
 }
 
+/* Footer bottom */
 .footer-bottom {
   text-align: center;
   padding-top: 3rem;
@@ -555,6 +595,7 @@ nav {
   color: var(--gray-color);
   font-size: 0.9rem;
 }
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {

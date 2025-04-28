@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const emailErrorMessage = document.querySelector('.form-group .error-message:first-of-type');
   const passwordErrorMessage = document.querySelector('.form-group.password-field .error-message');
 
-  // 🔒 Toggle password visibility
+  // password visibility
   const passwordToggle = document.querySelector('.password-toggle');
   if (passwordToggle) {
     passwordToggle.addEventListener('click', function () {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ✅ Form validation & API request
+  // API request
   loginForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     let isValid = true;
