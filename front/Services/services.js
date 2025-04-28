@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   //modal js
+  const token = localStorage.getItem('authToken');
   const modal = document.getElementById('modal');
   const openModalBtn = document.getElementById('openModal');
   const closeModalBtn = document.getElementById('closeModal');

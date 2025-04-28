@@ -51,12 +51,13 @@ document.addEventListener('DOMContentLoaded', function () {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ username: emailValue, password: passwordValue }),
+          body: JSON.stringify({ email: emailValue, password: passwordValue }),
         });
 
         if (response.ok) {
           const data = await response.json();
-          const token = data.access_token;  // JWT token
+          const token = data.accessToken;  // JWT token
+          localStorage.setItem('isLoggedIn', 'true'); // Add login flag
 
           // Store the token in localStorage
           localStorage.setItem('authToken', token);
@@ -64,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
           // Show success message and hide the form
           successMessage.style.display = 'block';
           setTimeout(() => {
-            window.location.href = 'services.html';  // Redirect to services page after success
-          }, 2000);  // Redirect after 2 seconds
+            window.location.href = '../../Services/services.html';  // Redirect to services page after success
+          }, 2000);  // Redirect after 2 seconds*/
         } else {
           const errorData = await response.json();
           // Handle backend error and display it
