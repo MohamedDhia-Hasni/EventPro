@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 5000);
              setTimeout(() => {
                window.location.href = '../login/login.html'; 
-             }, 5000);
+             }, 2000);
     
           } else {
             alert(data.message || 'Signup failed. Please try again.');

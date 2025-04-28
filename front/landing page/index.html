@@ -79,10 +79,11 @@
         </div>
         <span>EventPro</span>
       </div>
-      <div class="nav-links" id="navLinks">
-        <a href="../Services/services.html">Services</a>
-        <a href="../auth/login/login.html">Login</a>
-        <a href="../auth/Signup/signup.html">Sign up</a>
+      <div class="nav-links">
+        <a href="../Services/services.html" id="servicesLink" style="display: none">Services</a>
+        <a href="../auth/login/login.html" id="loginLink">Login</a>
+        <a href="../auth/signup/signup.html" id="signupLink">Sign Up</a>
+        <a href="#" id="logoutLink" style="display: none;">Logout</a>
       </div>
       <button class="menu-toggle" id="menuToggle">
         <span></span>
@@ -94,7 +95,7 @@
     <div class="hero-content">
       <h1>Create Unforgettable Events</h1>
       <p>From intimate gatherings to grand celebrations, we bring your vision to life with exceptional planning and flawless execution.</p>
-      <a class="cta-button" href="../Services/services.html">Let's Get Started</a>
+      <a class="cta-button" id="startButton">Let's Get Started</a>
     </div>
   </header>
 
@@ -234,6 +235,7 @@
     </div>
   </footer>
 
+  <script src="../header.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
