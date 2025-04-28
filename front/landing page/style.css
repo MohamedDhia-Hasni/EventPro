@@ -218,6 +218,7 @@ nav.scrolled {
 
 .cta-button {
   background: linear-gradient(45deg, #FF3366, #FF8080);
+  text-decoration: none;
   color: white;
   padding: 0.7rem 1.8rem;
   border: none;
