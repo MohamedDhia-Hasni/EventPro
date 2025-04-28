@@ -14,7 +14,10 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<User>,
+    private jwtService: JwtService,
+  ) {}
 
   async signup(signupData: SignupDto) {
     const { name, email, password } = signupData;
@@ -40,17 +43,16 @@ export class AuthService {
     if (!passwordMatches) {
       throw new UnauthorizedException('Invalid credentials');
     }
-    return user;
-  }
-  async getUserById(userId: string) {
-    const user = await this.userModel.findById(userId);
-    if (!user) {
-      throw new BadRequestException('User not found');
-    }
-    return user;
+    return this.generateUserToken(user._id as string);
   }
   async generateUserToken(userId: string) {
-    const accessToken = await this.jwtService.signAsync({userId});
+    const accessToken = await this.jwtService.sign({ userId });
+
+    return {
+      accessToken,
+    };
+  }
+
   /*async logout(logoutData: { userId: string }) {
     const { userId } = logoutData;
     const user = await this.userModel.findById(userId);
