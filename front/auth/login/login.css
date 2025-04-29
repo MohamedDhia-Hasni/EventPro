@@ -151,6 +151,7 @@ html, body {
 
 .form-group {
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .form-group label {
@@ -165,7 +166,7 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-group input:focus {
@@ -179,19 +180,55 @@ html, body {
   width: 100%;
 }
 
+.invalid-output {
+  display: none;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  background-color: rgba(239, 71, 111, 0.1);
+  border-left: 4px solid var(--error-color);
+  color: var(--error-color);
+  font-size: 0.9rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.invalid-output.show {
+  display: block;
+}
+
+.invalid-output ul {
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.invalid-output li {
+  margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .password-field {
   position: relative;
 }
 
 .password-toggle {
   position: absolute;
-  right: 12px; /* Adjusted to account for input padding and border */
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   color: var(--gray-color);
-  font-size: 1rem; /* Match input font-size for consistency */
-  z-index: 1; /* Ensure icon is clickable */
+  font-size: 1rem;
+  z-index: 1;
   transition: color 0.2s ease;
 }
 
@@ -290,25 +327,18 @@ html, body {
   color: var(--error-color);
   font-size: 0.875rem;
   margin-top: 0.5rem;
-  display: none;
-  animation: shake 0.5s ease-in-out;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+.form-group.error .error-message {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .form-group.error input {
   border-color: var(--error-color);
-}
-
-.form-group.error .error-message {
-  display: block;
-  opacity: 1;
 }
 
 .success-message {

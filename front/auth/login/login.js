@@ -2,10 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const loginForm = document.getElementById('loginForm');
   const emailInput = document.getElementById('email');
   const passwordInput = document.getElementById('password');
-  const passwordToggle = document.querySelector('.password-toggle');
   const successMessage = document.querySelector('.success-message');
+  const emailErrorMessage = document.querySelector('.form-group .error-message:first-of-type');
+  const passwordErrorMessage = document.querySelector('.form-group.password-field .error-message');
 
-  // 🔒 Toggle password visibility
+  // password visibility
+  const passwordToggle = document.querySelector('.password-toggle');
   if (passwordToggle) {
     passwordToggle.addEventListener('click', function () {
       const input = this.closest('.input-wrapper').querySelector('input');
@@ -16,42 +18,65 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ✅ Form validation
-  loginForm.addEventListener('submit', function (e) {
+  // API request
+  loginForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     let isValid = true;
 
-    // Remove all previous error states
-    const emailGroup = emailInput.closest('.form-group');
-    const passwordGroup = passwordInput.closest('.form-group');
-
-    emailGroup.classList.remove('error');
-    passwordGroup.classList.remove('error');
+    // Reset error states
+    emailErrorMessage.style.display = 'none';
+    passwordErrorMessage.style.display = 'none';
 
     const emailValue = emailInput.value.trim();
     const passwordValue = passwordInput.value.trim();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    // Validate email
     if (!emailPattern.test(emailValue)) {
-      emailGroup.classList.add('error');
+      emailErrorMessage.style.display = 'block'; // Show email error
       isValid = false;
     }
 
+    // Validate password
     if (passwordValue === '') {
-      passwordGroup.classList.add('error');
+      passwordErrorMessage.style.display = 'block'; // Show password error
       isValid = false;
     }
 
-    // ✅ Show success message if valid
+    // Proceed with login if form is valid
     if (isValid) {
-      successMessage.style.display = 'block';
-      loginForm.style.display = 'none';
+      try {
+        const response = await fetch('http://localhost:3000/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: emailValue, password: passwordValue }),
+        });
 
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-        loginForm.style.display = 'block';
-        loginForm.reset();
-      }, 3000);
+        if (response.ok) {
+          const data = await response.json();
+          const token = data.accessToken;  // JWT token
+          localStorage.setItem('isLoggedIn', 'true'); // Add login flag
+
+          // Store the token in localStorage
+          localStorage.setItem('authToken', token);
+
+          // Show success message and hide the form
+          successMessage.style.display = 'block';
+          setTimeout(() => {
+            window.location.href = '../../Services/services.html';  // Redirect to services page after success
+          }, 2000);  // Redirect after 2 seconds*/
+        } else {
+          const errorData = await response.json();
+          // Handle backend error and display it
+          alert(errorData.message || 'Login failed, please try again.');
+        }
+      } catch (error) {
+        // Handle any other errors (e.g., network errors)
+        console.error('Error:', error);
+        alert('An error occurred, please try again later.');
+      }
     }
   });
 });

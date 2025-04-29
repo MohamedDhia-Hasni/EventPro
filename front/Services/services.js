@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   //modal js
+  const token = localStorage.getItem('authToken');
   const modal = document.getElementById('modal');
   const openModalBtn = document.getElementById('openModal');
   const closeModalBtn = document.getElementById('closeModal');
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
       message: form.elements[4].value,
     };
   
-    try {
+ /*   try {*/
       await fetch('http://localhost:3000/quotes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -115,8 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
         form.style.display = 'block';
         form.reset();
       }, 3000);
-    } catch (err) {
+ /*   } catch (err) {
       alert("Failed to send quote. Try again.");
       console.error(err);
-    }
+    }*/
   });

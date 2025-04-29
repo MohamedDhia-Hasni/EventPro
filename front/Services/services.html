@@ -22,9 +22,10 @@
         </div>
       </a>
       <div class="nav-links">
-        <a href="../landing page/index.html">Home</a>
-        <a href="../auth/login/login.html">Login</a>
-        <a href="../auth/signup/signup.html">Sign Up</a>
+        <a href="../landing page/index.html" id="homeLink">Home</a>
+        <a href="../auth/login/login.html" id="loginLink">Login</a>
+        <a href="../auth/signup/signup.html" id="signupLink">Sign Up</a>
+        <a href="#" id="logoutLink" style="display: none;">Logout</a>
       </div>
       <button class="menu-toggle">
         <span></span>
@@ -152,7 +153,7 @@
         <div class="testimonial active">
           <p>"EventPro transformed our corporate gala into an unforgettable experience. Their attention to detail was impeccable!"</p>
           <div class="client">
-            <img src="https://scontent.ftun15-1.fna.fbcdn.net/v/t39.30808-1/438145763_422297364071558_825191339509869572_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=109&ccb=1-7&_nc_sid=e99d92&_nc_ohc=ji-wuJTSmzgQ7kNvwGL7bfS&_nc_oc=AdksTiCNR6bVZBATbbJfJWplB2gfPgP6dfUUFpfFHHSNXzfeKfeKgtFO85DrZGlZqCTxBezPqdC2hYTaLO7jMVDm&_nc_zt=24&_nc_ht=scontent.ftun15-1.fna&_nc_gid=NqbcJngAdBvfHFITUI82kw&oh=00_AfEpndr65g_qA-UAeL_ABuMPTO4wJ6_aEAhVX6xzGFGfPw&oe=680C6A1C" alt="Sarah Johnson">
+            <img src="https://scontent.ftun14-1.fna.fbcdn.net/v/t39.30808-1/438145763_422297364071558_825191339509869572_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=109&ccb=1-7&_nc_sid=e99d92&_nc_ohc=9F8pme0TtagQ7kNvwGc41tj&_nc_oc=AdlJKjH7GfdEdlbdXJH8guq-1Hh3x0NgQCRCD9lo56hVuV7owvOGY189f71n_LAGlZnnDmrJjo_EsI0acxok_dg7&_nc_zt=24&_nc_ht=scontent.ftun14-1.fna&_nc_gid=1RqOu38VY14d70nz5fSNjA&oh=00_AfHtl9zkTkRMsPKYn54_hqwva6ekEHrpR-XhxBV19lid6Q&oe=6815341C" alt="Kabil Boufares">
             <div class="client-info">
               <h4>Kabil boufares</h4>
               <span>Marketing Director, TechCorp</span>
@@ -172,7 +173,7 @@
         <div class="testimonial">
           <p>"The team's creativity and professionalism made our product launch a huge success with media and clients alike."</p>
           <div class="client">
-            <img src="https://scontent.ftun15-1.fna.fbcdn.net/v/t39.30808-6/475900794_2066956187071221_7011839828766599496_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=YU-Wwzphw5IQ7kNvwHIK2a9&_nc_oc=AdmPBxXEsXowT1OdecOaZC1XSu8DPdbP06-07HHOk9eR1CLMKJXmuZ0PNGyuCUyOgghk5HjUWcbAi33Soljk5GJ1&_nc_zt=23&_nc_ht=scontent.ftun15-1.fna&_nc_gid=TS-VO-PK8kB1SxXcKwEW5w&oh=00_AfHFdCtjVLWN3BL8F5iW9M4CNDOFAK4ZmWxNFnnxdONW8w&oe=680C551A" alt="Lisa Rodriguez">
+            <img src="https://scontent.ftun14-1.fna.fbcdn.net/v/t39.30808-6/475900794_2066956187071221_7011839828766599496_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=DpSb3hl4O5MQ7kNvwGcbNsx&_nc_oc=Adm5SYcWEt2Kz-s2ka8IiccReJborkNRPcdgoCAIpjJNaqmo2Zxwsb9QBv3NrH4gStAPTGwmVFk8TH_dIpmHtWA1&_nc_zt=23&_nc_ht=scontent.ftun14-1.fna&_nc_gid=tekiRtiLpllvCZBEZD2cWg&oh=00_AfF_N3Le-C_i1eKqD3QSntGTwhHc7FckW_LtByKPLzf-gA&oe=6815575A" alt="Rostom Turki">
             <div class="client-info">
               <h4>Rostom Turki</h4>
               <span>CEO, InnovateCo</span>
@@ -211,10 +212,10 @@
       <div class="footer-section">
         <h3>Services</h3>
         <ul>
-          <li><a href="#">Weddings</a></li>
-          <li><a href="#">Corporate Events</a></li>
-          <li><a href="#">Private Parties</a></li>
-          <li><a href="#">Conferences</a></li>
+          <li><a href="../landing page/index.html#events">Weddings</a></li>
+          <li><a href="../landing page/index.html#events">Corporate Events</a></li>
+          <li><a href="../landing page/index.html#events">Private Parties</a></li>
+          <li><a href="../landing page/index.html#events">Conferences</a></li>
         </ul>
       </div>
       <div class="footer-section">
@@ -232,6 +233,7 @@
     </div>
   </footer>
 
+  <script src="../header.js"></script>
   <script src="services.js"></script>
 </body>
 </html>
